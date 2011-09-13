@@ -6,9 +6,10 @@ license: MIT-style
 
 authors:
 - Kevin Valdek
+- Marcel Miranda
 
 requires:
-  core/1.3: '*'
+  core/1.4: '*'
 
 provides:
   - Rails 3 MooTools driver
@@ -26,7 +27,7 @@ provides:
     applyEvents: function(el) {
       el = $(el || document.body);
       var apply = function(selector, action, callback) {
-        el.getElements(selector).addEvent(action, callback);
+        el.addEvent(action + ":relay(" + selector + ")", callback);
       };
 
       apply('form[data-remote="true"]', 'submit', rails.handleRemote);
