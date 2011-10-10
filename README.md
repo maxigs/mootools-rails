@@ -1,5 +1,10 @@
 # MooTools-rails
 
+## Forked
+
+- Updated with Mootools 1.4.1 and Mootools More 1.4.0.1
+- Request.Rails now extends Request.HTML
+
 ## Rails 3.1
 
 This gem vendors MooTools 1.3.2 and the latest MooTools UJS adapter for Rails 3.1 and greater. The files will be added to the asset pipeline and available for you to use. These two lines will be added to the file `app/assets/javascripts/application.js` by default:

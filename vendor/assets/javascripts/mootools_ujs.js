@@ -106,7 +106,7 @@ provides:
 
   Request.Rails = new Class({
 
-    Extends: Request,
+    Extends: Request.HTML,
 
     initialize: function(element, options) {
       this.el = element;
@@ -133,7 +133,7 @@ provides:
       });
 
       this.addEvent('success', function() {
-        this.el.fireEvent('ajax:success', this.xhr);
+        this.el.fireEvent('ajax:success', arguments);
       });
 
       this.addEvent('complete', function() {
@@ -142,7 +142,7 @@ provides:
       });
 
       this.addEvent('failure', function() {
-        this.el.fireEvent('ajax:failure', this.xhr);
+        this.el.fireEvent('ajax:failure', arguments);
       });
     }
 
