@@ -107,6 +107,10 @@ provides:
   Request.Rails = new Class({
 
     Extends: Request.HTML,
+    
+    options: {
+      evalScripts: false
+    },
 
     initialize: function(element, options) {
       this.el = element;
