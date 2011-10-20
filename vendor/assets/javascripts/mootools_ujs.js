@@ -95,10 +95,10 @@ provides:
 
     handleRemote: function(e) {
       e.preventDefault();
-
-      if(rails.confirmed(this)) {
-        this.request = new Request.Rails(this);
-        rails.disable(this);
+      
+      if(rails.confirmed(e.target)) {
+        this.request = new Request.Rails(e.target);
+        rails.disable(e.target);
         this.request.send();
       }
     }
@@ -116,14 +116,14 @@ provides:
       this.el = element;
       this.parent(Object.merge({
         method: this.el.get('method') || this.el.get('data-method') || 'get',
-        url: this.el.get('action') || this.el.get('href')
+        url: this.el.get('data-url') || this.el.get('action') || this.el.get('href')
       }, options));
 
       this.addRailsEvents();
     },
 
     send: function(options) {
-      this.el.fireEvent('ajax:before');
+      this.el.fireEvent('ajax:before', this);
       if(this.el.get('tag') == 'form') {
         this.options.data = this.el;
       }
