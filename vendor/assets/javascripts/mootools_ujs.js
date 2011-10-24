@@ -31,8 +31,8 @@ provides:
       };
 
       apply('form[data-remote="true"]', 'submit', rails.handleRemote);
-      apply('a[data-remote="true"], input[data-remote="true"]', 'click', rails.handleRemote);
-      apply('a[data-method][data-remote!=true]', 'click', function(e) {
+      apply('a[data-remote="true"], .a[data-remote="true"], input[data-remote="true"], button[data-remote="true"]', 'click', rails.handleRemote);
+      apply('a[data-method][data-remote!=true], .a[data-method][data-remote!=true]', 'click', function(e) {
         e.preventDefault();
         if(rails.confirmed(this)) {
           var form = new Element('form', {
@@ -57,7 +57,7 @@ provides:
         }
       });
       var noMethodNorRemoteConfirm = ':not([data-method]):not([data-remote=true])[data-confirm]';
-      apply('a' + noMethodNorRemoteConfirm + ',' + 'input' + noMethodNorRemoteConfirm, 'click', function() {
+      apply('a' + noMethodNorRemoteConfirm + ',' + '.a' + noMethodNorRemoteConfirm + ',' + 'input' + noMethodNorRemoteConfirm, 'click', function() {
         return rails.confirmed(this);
       });
     },
